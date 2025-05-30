@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ page.title | default: "TetraTetra" }}</title>
+    <meta name="google" content="notranslate" />
+    <link rel="shortcut icon" href="assets/favicon.webp" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <article class="container">
+      {% assign triangles = 
+        "triangle-top,triangle-bottom" | split: "," %}
+      {% assign triangle_sides = 
+        "side-front,side-behind,side-right,side-left,side-bottom" | split: "," %}
+
+      {% for triangle in triangles %}
+        <div class="triangle {{ triangle }}">
+          {% for side in triangle_sides %}
+            <div class="side {{ side }}"></div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+
+      {% assign tts_classes = 
+        "tts-top-front,tts-top-behind,tts-top-right,tts-top-left,tts-bottom-front,tts-bottom-behind,tts-bottom-right,tts-bottom-left" | split: "," %}
+      {% assign tts_sides = "side-front,side-left,side-right,side-bottom" | split: "," %}
+
+      {% for tts in tts_classes %}
+        <div class="triangle-three-sides {{ tts }}">
+          {% for side in tts_sides %}
+            <div class="side {{ side }}"></div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </article>
+
+    <script src="script.js"></script>
+  </body>
+</html>
